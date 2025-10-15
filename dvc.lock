@@ -9,8 +9,8 @@ stages:
       size: 55459
     - path: src/data_processing.py
       hash: md5
-      md5: 18d3694e9d30d97a82e606c7cd8f51ef
-      size: 2314
+      md5: c9df8de7274cccb5c49d89a452c5c626
+      size: 2334
     params:
       params.yaml:
         base:
@@ -35,8 +35,8 @@ stages:
       size: 35094
     - path: src/train.py
       hash: md5
-      md5: 8d3122add54f614c1217b0e5a329a077
-      size: 1811
+      md5: 502da045275202c57a7c50615b24fb16
+      size: 1821
     params:
       params.yaml:
         base:
@@ -46,8 +46,8 @@ stages:
           model_dir: models
           model_name: model.joblib
           model_params:
-            n_estimators: 150
-            max_depth: 10
+            n_estimators: 200
+            max_depth: 15
             min_samples_split: 2
             min_samples_leaf: 1
             max_features: sqrt
@@ -60,8 +60,8 @@ stages:
     outs:
     - path: models/
       hash: md5
-      md5: 2f09924a76395316f0453ad89289b0fc.dir
-      size: 9666673
+      md5: a0422fc4cfaefc882d1f131d0fb98e07.dir
+      size: 27344305
       nfiles: 1
   evaluate:
     cmd: python src/evaluate.py
@@ -72,12 +72,12 @@ stages:
       size: 8868
     - path: models/model.joblib
       hash: md5
-      md5: 93acbc1d28c648eb9dbd5a2a4d6f3031
-      size: 9666673
+      md5: 3c285dcd3f7ef7f9f8f5ad7bfb639315
+      size: 27344305
     - path: src/evaluate.py
       hash: md5
-      md5: 3906b0d33608cf883a7d25dc5ae0cf72
-      size: 1551
+      md5: 9a248c3717f2846f25436141eced76dd
+      size: 1564
     params:
       params.yaml:
         base:
@@ -91,8 +91,8 @@ stages:
           model_dir: models
           model_name: model.joblib
           model_params:
-            n_estimators: 150
-            max_depth: 10
+            n_estimators: 200
+            max_depth: 15
             min_samples_split: 2
             min_samples_leaf: 1
             max_features: sqrt
@@ -105,5 +105,5 @@ stages:
     outs:
     - path: metrics/metrics.json
       hash: md5
-      md5: 012c9b5d37468259a5e5dff1a88b96d1
-      size: 63
+      md5: 7f8f5cca04de1853c77f59912856018f
+      size: 62
