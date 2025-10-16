@@ -9,7 +9,7 @@ stages:
       - base
       - data_processing
     outs:
-      - data/processed/
+      - data/processed/ 
 
   train:
     cmd: python src/train.py
