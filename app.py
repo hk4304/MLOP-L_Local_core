@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import joblib
 import pandas as pd
 import os
@@ -17,11 +17,17 @@ else:
 
 @app.route('/')
 def home():
+    """Serve the frontend HTML page"""
+    return render_template('index.html')
+
+@app.route('/api')
+def api_info():
+    """API information endpoint"""
     return jsonify({
         "message": "Volunteer Turnout Prediction API",
         "status": "running",
         "model_loaded": model is not None,
-        "endpoints": ["/", "/health", "/predict"]
+        "endpoints": ["/", "/api", "/health", "/predict"]
     })
 
 @app.route('/predict', methods=['POST'])
