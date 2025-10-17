@@ -15,6 +15,10 @@ COPY params.yaml .
 COPY models/ ./models/
 COPY data/processed/ ./data/processed/
 
+# Copy frontend files
+COPY templates/ ./templates/
+COPY static/ ./static/
+
 # Expose port
 EXPOSE 8080
 
