@@ -1,20 +1,22 @@
-# Use Python 3.9 slim image
-FROM python:3.9-slim
+FROM python:3.11-slim
 
-# Set working directory
 WORKDIR /app
 
-# Copy requirements file
+# Copy requirements first for better caching
 COPY requirements.txt .
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy all project files
-COPY . .
+# Copy application code and necessary files
+COPY app.py .
+COPY src/ ./src/
+COPY params.yaml .
+COPY models/ ./models/
+COPY data/processed/ ./data/processed/
 
-# Set environment variables
-ENV PYTHONUNBUFFERED=1
+# Expose port
+EXPOSE 8080
 
-# Command to run the pipeline
-CMD ["dvc", "repro"]
+# Run the Flask application
+CMD ["python", "app.py"]
